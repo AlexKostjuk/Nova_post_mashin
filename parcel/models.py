@@ -11,3 +11,6 @@ class Parcel(models.Model):
     open_date_time = models.DateTimeField('date published')
     status = models.BooleanField(default=0)
 
+
+
+
