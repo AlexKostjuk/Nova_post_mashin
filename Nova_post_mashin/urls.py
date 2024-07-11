@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('user/', user.views.user_page),
     path('parcel/', include('parcel.urls')),
+    path('post_machin/', include('post_machin.urls')),
 
 ]
