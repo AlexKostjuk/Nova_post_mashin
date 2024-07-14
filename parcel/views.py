@@ -4,11 +4,12 @@ from django.shortcuts import render
 from parcel import models
 
 # Create your views here.
-def parcels_view(requst):
-    return HttpResponse("helo start meni")
+def parcels_view(request):
+    user = request.user
+    parcels = models.Parcel.objects.filter(recipient=user)
+    return render(request, 'parcels.html', context={'parcels':parcels})
 
 
-def one_parcel_view(requst, parcel_id):
+def one_parcel_view(request, parcel_id):
     result = models.Parcel.objects.get(pk=parcel_id)
-    return HttpResponse(f"helo start one {parcel_id}")
-
+    return render(request, 'one_parcel.html', context={'parcel': result})

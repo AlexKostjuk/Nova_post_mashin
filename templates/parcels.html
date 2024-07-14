@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for parcel in parcels %}
+    <a href="/parcel/{{ parcel.pk }}">parcel{{ parcel.pk }}</a>
+    sender : {{ parcel.sender }} <br>
+    status : {{ parcel.status }} <br>
+    post_machine : {{ parcel.post_machin.city }} {{ parcel.post_machin.adress }} <br>
+    ____________
+    <br>
+{% endfor %}
+</body>
+</html>
