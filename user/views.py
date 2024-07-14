@@ -31,7 +31,7 @@ def register_view(request):
       email = request.POST['email']
       fname = request.POST['fname']
       lname = request.POST['lname']
-      user = User.objects.create_user(username=username, email=email, passsword=passsword, fname=fname, lname=lname)
+      user = User.objects.create_user(username=username, email=email, password=passsword, first_name=fname, last_name=lname)
       user.save()
       return redirect('/login/')
    else:

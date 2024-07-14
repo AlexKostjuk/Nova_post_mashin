@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form action="/login/" method="post">
+        {% csrf_token %}
+        <label for="username">login користувача:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+
+
+        <input type="submit" value="Увійти">
+</body>
+</html>
