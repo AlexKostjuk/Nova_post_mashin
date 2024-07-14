@@ -2,6 +2,7 @@ from django.http import HttpResponse
 # Create your views here.
 from django.shortcuts import render
 from parcel import models, forms
+from parcel.forms import ParcelForm
 
 
 # Create your views here.
@@ -16,18 +17,13 @@ def one_parcel_view(request, parcel_id):
     return render(request, 'one_parcel.html', context={'parcel': result})
 
 
-# def new_parcel(request):
-#     if request.method == 'POST':
-#         form = forms.ParcelForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponse('form.save()')
-#         else:
-#             return HttpResponse('not form.save()')
-#     else:
-#         render(request, 'qwer.html', context=forms.ParcelForm())
-
-
-
-
-
+def parcel_form(request):
+    if request.method == 'POST':
+        form = ParcelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('form.save()')
+        else:
+            return HttpResponse('not form.save()')
+    form = ParcelForm()
+    return render(request, 'parcel_form.html', context={'form':form})

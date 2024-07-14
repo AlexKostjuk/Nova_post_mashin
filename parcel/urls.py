@@ -5,6 +5,7 @@ import parcel.views
 
 urlpatterns = [
     path('', parcel.views.parcels_view),
+    path('parcel_form/', parcel.views.parcel_form),
     path('<parcel_id>/', parcel.views.one_parcel_view),
 
 ]
