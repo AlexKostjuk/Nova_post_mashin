@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for post_machin in post_machines %}
+    address : {{ post_machin.adress }} <br>
+    city : {{ post_machin.city }} <br>
+    ____________
+    <br>
+{% endfor %}
+
+<a href="/post_machines/">post_machins</a>
+</body>
+</html>
