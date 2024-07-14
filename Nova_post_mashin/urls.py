@@ -28,6 +28,6 @@ urlpatterns = [
     path('register/', user.views.register_view),
 
     path('parcel/', include('parcel.urls')),
-    path('post_machin/', include('post_machin.urls')),
+    path('post_machines/', include('post_machin.urls')),
 
 ]

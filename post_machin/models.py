@@ -7,10 +7,13 @@ class PostMachin(models.Model):
     city = models.CharField(max_length=200)
 
 
+
+
 class Locker(models.Model):
     size = models.ImageField()
     post_machin = models.ForeignKey(PostMachin, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
+
 
 
 

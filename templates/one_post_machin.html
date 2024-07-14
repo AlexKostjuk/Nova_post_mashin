@@ -5,9 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-{% for post_machin in post_machines %}
-    address : {{ post_machin.adress }} <br>
-    city : {{ post_machin.city }} <br>
+{% for post_machin_lock in post_machin_lockes %}
+    id number --- {{ post_machin_lock.pk }} <br>
+    size : {{ post_machin_lock.size }} <br>
+    status : {{ post_machin_lock.status }} <br>
     ____________
     <br>
 {% endfor %}
