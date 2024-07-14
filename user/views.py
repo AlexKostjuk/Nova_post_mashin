@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
-from user.forms import LoginForm
+from user.forms import LoginForm, RegisterForm
 
 
 # Create your views here.
@@ -30,16 +30,19 @@ def logout_view(request):
 
 def register_view(request):
    if request.method == 'POST':
-      username = request.POST['username']
-      password = request.POST['password']
-      email = request.POST['email']
-      fname = request.POST['fname']
-      lname = request.POST['lname']
-      user = User.objects.create_user(username=username, email=email, password=password, first_name=fname, last_name=lname)
-      user.save()
-      return redirect('/login/')
+      form = RegisterForm(request.POST)
+      if form.is_valid():
+
+         user = User.objects.create_user(username=form.cleaned_data['username'],
+                                         email=form.cleaned_data['email'],
+                                         password=form.cleaned_data['password'],
+                                         first_name=form.cleaned_data['fname'],
+                                         last_name=form.cleaned_data['lname']
+                                         )
+         user.save()
+         return redirect('/login/')
    else:
-      return render(request, 'register.html')
+      return render(request, 'register.html',context={'form':RegisterForm()})
 
 
 @login_required
