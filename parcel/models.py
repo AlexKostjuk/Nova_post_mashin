@@ -10,7 +10,7 @@ from post_machin.models import PostMachin
 class Parcel(models.Model):
     recipient = models.ForeignKey(User, on_delete=models.CASCADE)
     sender = models.CharField(max_length=200)
-    size = models.ImageField()
+    size = models.IntegerField()
     post_machin = models.ForeignKey(PostMachin, on_delete=models.CASCADE)
     order_date_time = models.DateTimeField('date published')
     update_date_time = models.DateTimeField('date published',default=datetime.now)
