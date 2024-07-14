@@ -9,8 +9,8 @@ def login_view (request):
    context = {}
    if request.method == 'POST':
       username = request.POST['username']
-      passsword = request.POST['password']
-      user = authenticate(username=username, passsword=passsword)
+      password = request.POST['password']
+      user = authenticate(username=username, password=password)
       if user is not None:
          login(request, user)
          return redirect('/user/')
@@ -27,11 +27,11 @@ def logout_view(request):
 def register_view(request):
    if request.method == 'POST':
       username = request.POST['username']
-      passsword = request.POST['password']
+      password = request.POST['password']
       email = request.POST['email']
       fname = request.POST['fname']
       lname = request.POST['lname']
-      user = User.objects.create_user(username=username, email=email, password=passsword, first_name=fname, last_name=lname)
+      user = User.objects.create_user(username=username, email=email, password=password, first_name=fname, last_name=lname)
       user.save()
       return redirect('/login/')
    else:
