@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 import user.views
+from Nova_post_mashin import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +30,6 @@ urlpatterns = [
 
     path('parcel/', include('parcel.urls')),
     path('post_machines/', include('post_machin.urls')),
+    path('', views.home, name='home')
 
 ]
