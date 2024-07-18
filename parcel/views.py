@@ -1,8 +1,11 @@
+import datetime
+
 from django.http import HttpResponse
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from parcel import models, forms
 from parcel.forms import ParcelForm
+from parcel.models import Parcel
 
 
 # Create your views here.
@@ -12,8 +15,27 @@ def parcels_view(request):
     return render(request, 'parcels.html', context={'parcels':parcels})
 
 
+def get_parcel(request,parcel_id):
+    if request.method == 'POST':
+        parcel = models.Parcel.objects.get(pk=request.POST['parcel_id'])
+        parcel.status = True
+
+        parcel.open_date_time = datetime.datetime.now()
+        if parcel.order_date_time is None:
+            parcel.order_date_time = datetime.datetime.now()
+        if parcel.update_date_time is None:
+            parcel.update_date_time = datetime.datetime.now()
+        parcel.save()
+
+        parcel.locker.status = True
+        parcel.locker.save()
+        return redirect ('/parcel/')
+
+
+
 def one_parcel_view(request, parcel_id):
     result = models.Parcel.objects.get(pk=parcel_id)
+
     return render(request, 'one_parcel.html', context={'parcel': result})
 
 
