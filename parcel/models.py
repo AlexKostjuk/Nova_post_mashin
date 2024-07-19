@@ -16,7 +16,7 @@ class Parcel(models.Model):
     size = models.IntegerField()
     post_machin = models.ForeignKey(PostMachin, on_delete=models.CASCADE)
     locker = models.ForeignKey(Locker, null=True, blank=True, default=None, on_delete=models.DO_NOTHING)
-    order_date_time = models.DateTimeField('date published')
+    order_date_time = models.DateTimeField('date published',default=datetime.now())
     update_date_time = models.DateTimeField('date published',default=datetime.now)
     open_date_time = models.DateTimeField('date published', null=True, blank=True)
     status = models.BooleanField(default=False)

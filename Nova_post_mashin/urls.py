@@ -30,6 +30,7 @@ urlpatterns = [
 
     path('parcel/', include('parcel.urls')),
     path('post_machines/', include('post_machin.urls')),
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('user/login/', user.views.login_view),
 
 ]
