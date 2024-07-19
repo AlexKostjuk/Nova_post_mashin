@@ -46,7 +46,9 @@ def parcel_form(request):
             form.save()
             return HttpResponse('form.save()')
         else:
-            form = ParcelForm()
+            # form = ParcelForm()
+            form = ParcelForm(initial={'sender': request.user.username})
+
             return render(request, 'parcel_form.html', context={'form': form})
             # return HttpResponse('not form.save()')
     # form = ParcelForm()
